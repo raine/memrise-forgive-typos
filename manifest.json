@@ -1,0 +1,13 @@
+{
+   "content_scripts": [ {
+      "exclude_globs": [  ],
+      "exclude_matches": [  ],
+      "js": [ "MemriseForgiveTypos.user.js" ],
+      "matches": [ "http://www.memrise.com/course/*/garden/*", "http://www.memrise.com/garden/*" ],
+      "run_at": "document_idle"
+   } ],
+   "description": "TODO",
+   "name": "Memrise Forgive Typos",
+   "version": "0.1",
+   "manifest_version": 2
+}
