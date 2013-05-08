@@ -89,12 +89,17 @@ function main() {
 
 	$('body').off('keydown');
 	$('body').on('keydown', function(e) {
-		var copytyping = $('.garden-box').hasClass('copytyping');
-		if (!copytyping && $(e.target).is('input') && e.which === 13) {
-			if (check_answer(e.target)) {
+		try {
+			var copytyping = $('.garden-box').hasClass('copytyping');
+			if (!copytyping && $(e.target).is('input') && e.which === 13) {
+				if (check_answer(e.target)) {
+					trigger(e);
+				}
+			} else  {
 				trigger(e);
 			}
-		} else  {
+		} catch (err) {
+			console.log('error - falling back to default behavior', err);
 			trigger(e);
 		}
 	});
