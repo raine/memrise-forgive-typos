@@ -57,14 +57,17 @@ function main() {
 
 	var levenshtein = MEMRISE.garden.scoring.levenshtein;
 
-	var prev_val;
+	var prev_q;
 	var check_answer = function(input) {
-		var val = $(input).val();
-		if (prev_val === val) return true;
+		var q;
+		if ((q = get_question()) && q === prev_q) {
+			return true;
+		}
 
-		var obj = get_thing_by_q(get_question());
+		var val = $(input).val();
+		var obj = get_thing_by_q(q);
 		var lev = levenshtein(val, obj.answer).distance;
-		prev_val = val;
+		prev_q = q;
 
 		if (lev > 0 && lev <= 2) {
 			return false;
