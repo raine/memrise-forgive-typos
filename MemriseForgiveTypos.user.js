@@ -50,7 +50,7 @@ function main() {
 				return {
 					answer   : thing.columns[thinguser.column_a].val,
 					question : thing.columns[thinguser.column_b].val
-				}
+				};
 			}
 		}
 	};
