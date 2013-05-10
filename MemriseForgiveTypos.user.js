@@ -31,7 +31,7 @@ function main() {
 			thingusers = MEMRISE.garden.thingusers._list;
 		}
 	};
-	
+
 	var get_thinguser = function(id) {
 		return thingusers.filter(function(e) {
 			return e.thing_id === id;
@@ -64,15 +64,15 @@ function main() {
 			return true;
 		}
 
-		var val = $(input).val();
-		var obj = get_thing_by_q(q);
-		var lev = levenshtein(val, obj.answer).distance;
+		var val = $(input).val().toLowerCase();
+		var answer = get_thing_by_q(q).answer.toLowerCase();
+		var dist = levenshtein(val, answer).distance;
 		prev_q = q;
 
-		if (lev > 0 && lev <= 2) {
+		if (dist > 0 && dist <= 2) {
 			return false;
 		}
-		
+
 		return true;
 	};
 
