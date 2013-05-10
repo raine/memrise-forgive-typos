@@ -4,6 +4,8 @@
 // @match          http://www.memrise.com/course/*/garden/*
 // @match          http://www.memrise.com/garden/water/*
 // @version        0.1
+// @updateURL      https://userscripts.org/scripts/source/167003.meta.js
+// @downloadURL    https://userscripts.org/scripts/source/167003.user.js
 // @grant          none
 // ==/UserScript==
 
