@@ -81,12 +81,12 @@ function main() {
 
 	for (var i = keydowns.length - 1; i >= 0; i--){
 		handlers.push(keydowns[i]);
-	};
+	}
 
 	var trigger = function(event) {
 		for (var i = handlers.length - 1; i >= 0; i--) {
 			handlers[i].handler(event);
-		};
+		}
 	};
 
 	$('body').off('keydown');
