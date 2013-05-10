@@ -26,9 +26,8 @@ function main() {
 	};
 
 	var things, thingusers;
-
 	var get_things = function() {
-		if (typeof things === 'undefined') {
+		if (things === undefined) {
 			things     = MEMRISE.garden.things;
 			thingusers = MEMRISE.garden.thingusers._list;
 		}
