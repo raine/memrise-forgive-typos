@@ -46,8 +46,7 @@ function main() {
 			var thing = things[id];
 			var thinguser = get_thinguser(thing.id);
 
-			var val;
-			if (val = thing.columns[thinguser.column_b].val === str) {
+			if (thing.columns[thinguser.column_b].val === str) {
 				return {
 					answer   : thing.columns[thinguser.column_a].val,
 					question : thing.columns[thinguser.column_b].val
