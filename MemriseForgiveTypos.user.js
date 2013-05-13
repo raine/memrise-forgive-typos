@@ -10,6 +10,10 @@
 // ==/UserScript==
 
 var onLoad = function($) {
+	// Set to true if you don't want lack of accents to register as typos
+	// e.g. garcon acceptable answer for garçon
+	var IGNORE_ACCENTS = false;
+
 	var get_question = function() {
 		return $('.qquestion')[0].childNodes[0].nodeValue.trim();
 	};
@@ -46,6 +50,18 @@ var onLoad = function($) {
 
 	var levenshtein = MEMRISE.garden.scoring.levenshtein;
 
+	var compare = function(a, b) {
+		a = a.toLowerCase();
+		b = b.toLowerCase();
+
+		if (IGNORE_ACCENTS) {
+			a = removeDiacritics(a);
+			b = removeDiacritics(b);
+		}
+
+		return levenshtein(a, b).distance;
+	};
+
 	var prev_q;
 	var check_answer = function(input) {
 		var q;
@@ -53,9 +69,9 @@ var onLoad = function($) {
 			return true;
 		}
 
-		var val = $(input).val().toLowerCase();
-		var answer = get_thing_by_q(q).answer.toLowerCase();
-		var dist = levenshtein(val, answer).distance;
+		var val    = $(input).val();
+		var answer = get_thing_by_q(q).answer;
+		var dist   = compare(val, answer);
 		prev_q = q;
 
 		if (dist > 0 && dist <= 2) {
@@ -104,6 +120,12 @@ var onLoad = function($) {
 	ready(setup);
 };
 
-var script = document.createElement("script");
-script.textContent = '$(' + onLoad.toString() + '($));';
+var script = document.createElement('script');
+// A 3kB piece of code for removing accents from characters
+script.setAttribute('src', '//raneksi.github.io/memrise-forgive-typos/diacritics.js');
+script.addEventListener('load', function() {
+	var script = document.createElement('script');
+	script.textContent = '$(' + onLoad.toString() + '($));';
+	document.body.appendChild(script);
+}, false);
 document.body.appendChild(script);
