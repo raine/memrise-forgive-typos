@@ -65,35 +65,43 @@ var onLoad = function($) {
 		return true;
 	};
 
-	var handlers = [];
-	var keydowns = $._data($('body').get(0), 'events').keydown;
+	var setup = function() {
+		var handlers = [];
+		var keydowns = $._data($('body').get(0), 'events').keydown;
 
-	for (var i = keydowns.length - 1; i >= 0; i--){
-		handlers.push(keydowns[i]);
+		for (var i = keydowns.length - 1; i >= 0; i--){
+			handlers.push(keydowns[i]);
+		}
+
+		var trigger = function(event) {
+			for (var i = handlers.length - 1; i >= 0; i--) {
+				handlers[i].handler(event);
+			}
+		};
+
+		$('body').off('keydown');
+		$('body').on('keydown', function(e) {
+			try {
+				var copytyping = $('.garden-box').hasClass('copytyping');
+				if (!copytyping && $(e.target).is('input') && e.which === 13) {
+					if (!check_answer(e.target)) {
+						return alert('Close, did you make a typo? Try again.');
+					}
+				}
+
+				trigger(e);
+			} catch (err) {
+				console.log('error - falling back to default behavior', err);
+				trigger(e);
+			}
+		});
 	}
 
-	var trigger = function(event) {
-		for (var i = handlers.length - 1; i >= 0; i--) {
-			handlers[i].handler(event);
-		}
+	var ready = function (f) {
+		$._data($('body').get(0), 'events') ? f() : setTimeout(ready, 9, f);
 	};
 
-	$('body').off('keydown');
-	$('body').on('keydown', function(e) {
-		try {
-			var copytyping = $('.garden-box').hasClass('copytyping');
-			if (!copytyping && $(e.target).is('input') && e.which === 13) {
-				if (!check_answer(e.target)) {
-					return alert('Close, did you make a typo? Try again.');
-				}
-			}
-
-			trigger(e);
-		} catch (err) {
-			console.log('error - falling back to default behavior', err);
-			trigger(e);
-		}
-	});
+	ready(setup);
 };
 
 var script = document.createElement("script");
