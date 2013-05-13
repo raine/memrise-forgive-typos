@@ -9,18 +9,7 @@
 // @grant          none
 // ==/UserScript==
 
-function addjQuery(callback) {
-	var script = document.createElement("script");
-	script.setAttribute("src", "//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js");
-	script.addEventListener('load', function() {
-		var script = document.createElement("script");
-		script.textContent = "window.jQ=jQuery.noConflict(true);(" + callback.toString() + ")();";
-		document.body.appendChild(script);
-	}, false);
-	document.body.appendChild(script);
-}
-
-function main() {
+var onLoad = function($) {
 	var get_question = function() {
 		return $('.qquestion')[0].childNodes[0].nodeValue.trim();
 	};
@@ -105,6 +94,8 @@ function main() {
 			trigger(e);
 		}
 	});
-}
+};
 
-addjQuery(main);
+var script = document.createElement("script");
+script.textContent = '$(' + onLoad.toString() + '($));';
+document.body.appendChild(script);
