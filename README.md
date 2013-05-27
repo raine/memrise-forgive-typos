@@ -1,8 +1,6 @@
 MemriseForgiveTypos.user.js
 ===========================
 
-### Description
-
 Shows an alert box ***once*** if the [Levenshtein
 distance](http://en.wikipedia.org/wiki/Levenshtein_distance) of a given
 answer and the correct answer is 1 or 2.
@@ -11,13 +9,32 @@ I'm not a big fan of making a hack like this but at the same time I don't
 think you should be punished for accidental typos as Memrise currently does.
 Use at your own peril.
 
-### Installation
-
-Install here: [http://userscripts.org/scripts/show/167003](http://userscripts.org/scripts/show/167003)
-
-For specific instructions on each browser, use this as a reference:
-[https://github.com/raneksi/memrise-hotkeys#installation](https://github.com/raneksi/memrise-hotkeys#installation)
-
----
-
 ![](http://raneksi.github.io/memrise-forgive-typos/demo.gif)
+
+# Installation
+
+I have tested the userscript on Chrome and Firefox using Greasemonkey.
+
+## Firefox
+
+1. Install [Greasemonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/).
+2. Go to http://userscripts.org/scripts/show/167003 and click **Install**.
+
+## Chrome
+
+### Method 1 (Recommended)
+
+This method provides automatic updates for the script.
+
+1. Install [Tampermonkey extension](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo) on Chrome Store.
+2. Go to http://userscripts.org/scripts/source/167003.user.js and click **OK** to confirm installation.
+
+### Method 2
+
+1. Download [MemriseForgiveTypos.user.js](https://github.com/raneksi/memrise-forgive-typos/raw/master/MemriseForgiveTypos.user.js) to your computer.
+2. Go to the extension view in Chrome ([chrome://extensions](chrome://extensions)).
+3. Drag the `MemriseForgiveTypos.user.js` file on the extension page. It should say "Drop to install" as you do so.
+
+## Safari
+
+I haven't tried. [Search Google](https://www.google.com/search?q=install+userscripts+safari) for ways to install userscripts.
