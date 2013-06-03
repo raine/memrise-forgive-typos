@@ -12,7 +12,8 @@
 var onLoad = function($) {
 	// Set to true if you don't want lack of accents to register as typos
 	// e.g. garcon acceptable answer for garçon
-	var IGNORE_ACCENTS = false;
+	var IGNORE_ACCENTS  = false;
+	var SKIP_CATEGORIES = [ 'Chinese' ];
 
 	var get_question = function() {
 		return $('.qquestion')[0].childNodes[0].nodeValue.trim();
@@ -64,6 +65,10 @@ var onLoad = function($) {
 
 	var prev_q;
 	var check_answer = function(input) {
+		if (SKIP_CATEGORIES.some(function(c) {
+			return c ===  MEMRISE.garden.session.category.name;
+		})) return true;
+
 		var q;
 		if ((q = get_question()) && q === prev_q) {
 			return true;
@@ -111,7 +116,7 @@ var onLoad = function($) {
 				trigger(e);
 			}
 		});
-	}
+	};
 
 	var ready = function(f) {
 		$._data($('body').get(0), 'events') ? f() : setTimeout(ready, 9, f);
