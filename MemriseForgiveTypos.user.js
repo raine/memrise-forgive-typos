@@ -3,7 +3,7 @@
 // @description    Makes Memrise more forgiving on typos
 // @match          http://www.memrise.com/course/*/garden/*
 // @match          http://www.memrise.com/garden/water/*
-// @version        0.1.3
+// @version        0.1.4
 // @updateURL      https://userscripts.org/scripts/source/167003.meta.js
 // @downloadURL    https://userscripts.org/scripts/source/167003.user.js
 // @grant          none
