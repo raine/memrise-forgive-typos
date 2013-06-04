@@ -69,9 +69,9 @@ var onLoad = function($) {
 			return true;
 		}
 
-		var val    = $(input).val();
-		var answer = get_thing_by_q(q).answer;
-		var dist   = compare(val, answer);
+		var given   = $(input).val();
+		var correct = get_thing_by_q(q).answer;
+		var dist    = compare(given, correct);
 		prev_q = q;
 
 		if (dist > 0 && dist <= 2) {
@@ -111,7 +111,7 @@ var onLoad = function($) {
 				trigger(e);
 			}
 		});
-	}
+	};
 
 	var ready = function(f) {
 		$._data($('body').get(0), 'events') ? f() : setTimeout(ready, 9, f);
