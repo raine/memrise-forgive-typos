@@ -75,6 +75,10 @@ var onLoad = function($) {
 
 		if (MEMRISE.garden.session.category.name === 'Chinese') {
 			var hasTone = correct.match(/\d$/);
+			if (hasTone && LSget('forgive-typos-pinyin-disable') === true) {
+				return true;
+			}
+
 			if (hasTone && hasTone[0] !== given[given.length-1]) {
 				// If tones don't match; skip typo check
 				return true;
@@ -88,6 +92,24 @@ var onLoad = function($) {
 			return false;
 		}
 
+		return true;
+	};
+
+	var handle_config = function(input) {
+		var given = $(input).val();
+		var has = function(str) {
+			return given.indexOf(str) > -1;
+		};
+
+		if (!has('forgive-typos')) {
+			return false;
+		}
+
+		if (has('pinyin')) {
+			localStorage['forgive-typos-pinyin-disable'] = has('disable');
+		}
+
+		$(input).val('');
 		return true;
 	};
 
@@ -110,6 +132,7 @@ var onLoad = function($) {
 			try {
 				var copytyping = $('.garden-box').hasClass('copytyping');
 				if (!copytyping && $(e.target).is('input') && e.which === 13) {
+					if (handle_config(e.target)) return;
 					if (!check_answer(e.target)) {
 						return alert('Close, did you make a typo? Try again.');
 					}
