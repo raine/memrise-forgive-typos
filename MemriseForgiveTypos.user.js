@@ -64,8 +64,9 @@ var onLoad = function($) {
 
 	var prev_q;
 	var check_answer = function(input) {
-		var q;
-		if ((q = get_question()) && q === prev_q) {
+		var q = get_question();
+		if (q === prev_q) {
+			// Skip typo check the on second time regardless of given answer
 			return true;
 		}
 
