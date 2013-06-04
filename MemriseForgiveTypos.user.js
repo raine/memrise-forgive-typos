@@ -72,7 +72,16 @@ var onLoad = function($) {
 
 		var given   = $(input).val();
 		var correct = get_thing_by_q(q).answer;
-		var dist    = compare(given, correct);
+
+		if (MEMRISE.garden.session.category.name === 'Chinese') {
+			var hasTone = correct.match(/\d$/);
+			if (hasTone && hasTone[0] !== given[given.length-1]) {
+				// If tones don't match; skip typo check
+				return true;
+			}
+		}
+
+		var dist = compare(given, correct);
 		prev_q = q;
 
 		if (dist > 0 && dist <= 2) {
