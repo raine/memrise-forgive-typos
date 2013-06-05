@@ -63,7 +63,11 @@ var onLoad = function($) {
 	};
 
 	var LSget = function(key) {
-		return JSON.parse(localStorage[key]);
+		var value = localStorage[key];
+		if (value === null || value === undefined) {
+			return undefined;
+		}
+		try { return JSON.parse(value); } catch (e) { return null; }
 	};
 
 	var prev_q;
