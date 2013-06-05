@@ -78,10 +78,11 @@ var onLoad = function($) {
 			return true;
 		}
 
-		var given   = $(input).val();
-		var correct = get_thing_by_q(q).answer;
+		var given    = $(input).val();
+		var correct  = get_thing_by_q(q).answer;
+		var category = MEMRISE.garden.session.category.name;
 
-		if (MEMRISE.garden.session.category.name === 'Chinese') {
+		if (category === 'Chinese') {
 			// Return true if typo check should be skipped
 			var handleChinese = function(given, correct) {
 				var TONE_REGEX = /(\d)\b/g;
@@ -107,6 +108,27 @@ var onLoad = function($) {
 			};
 
 			if (handleChinese(given, correct)) {
+				return true;
+			}
+		} else if (category === 'French') {
+			var handleFrench = function(given, correct) {
+				var ARTICLES = [ 'le', 'la', 'les', 'un', 'une', 'des' ];
+				var regex    = new RegExp('\\b(' + ARTICLES.join('|') + ')\\b', 'gi');
+				var article  = function(str) {
+					var m = str.match(regex);
+					return m && m[0];
+				};
+
+				var givenArticle   = article(given);
+				var correctArticle = article(correct);
+				if (correctArticle && correctArticle !== givenArticle) {
+					return true;
+				}
+
+				return false;
+			};
+
+			if (handleFrench(given, correct)) {
 				return true;
 			}
 		}
