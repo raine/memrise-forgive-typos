@@ -82,13 +82,31 @@ var onLoad = function($) {
 		var correct = get_thing_by_q(q).answer;
 
 		if (MEMRISE.garden.session.category.name === 'Chinese') {
-			var hasTone = correct.match(/\d$/);
-			if (hasTone && LSget('forgive-typos-pinyin-disable') === true) {
-				return true;
-			}
+			// Return true if typo check should be skipped
+			var handleChinese = function(given, correct) {
+				var TONE_REGEX = /(\d)\b/g;
+				var tones = function(str) {
+					return str.match(TONE_REGEX);
+				};
 
-			if (hasTone && hasTone[0] !== given[given.length-1]) {
-				// If tones don't match; skip typo check
+				var correctTones = tones(correct);
+				if (correctTones) {
+					if (LSget('forgive-typos-pinyin-disable') === true) {
+						return true;
+					}
+
+					var givenTones = tones(given);
+					if (givenTones.join() !== correctTones.join()) {
+						// If tones don't match; skip typo check, i.e. typo check
+						// should only apply for the pinyin
+						return true;
+					}
+				}
+
+				return false;
+			};
+
+			if (handleChinese(given, correct)) {
 				return true;
 			}
 		}
