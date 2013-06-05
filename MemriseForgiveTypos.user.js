@@ -62,6 +62,10 @@ var onLoad = function($) {
 		return levenshtein(a, b).distance;
 	};
 
+	var LSget = function(key) {
+		return JSON.parse(localStorage[key]);
+	};
+
 	var prev_q;
 	var check_answer = function(input) {
 		var q = get_question();
