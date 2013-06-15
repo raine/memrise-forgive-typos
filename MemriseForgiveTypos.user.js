@@ -38,12 +38,22 @@ var onLoad = function($) {
 		for (var id in things) {
 			var thing = things[id];
 			var thinguser = get_thinguser(thing.id);
-
-			if (thing.columns[thinguser.column_b].val === str) {
-				return {
-					answer   : thing.columns[thinguser.column_a].val,
-					question : thing.columns[thinguser.column_b].val
-				};
+			if (thinguser) {
+				// Get the 'question' for the current `thing` based on the
+				// column_b from `thinguser` for this particular `thing.
+				// Compare the `question` with the given question str and if
+				// they match, we can pick the current `thing`.
+				//
+				// Sometimes the 'question' seems to have trailing
+				// whitespace, perhaps because they are written by users who
+				// may accidentally put spaces in the end
+				var question = thing.columns[thinguser.column_b].val;
+				if ($.trim(question) === $.trim(str)) {
+					return {
+						answer   : thing.columns[thinguser.column_a].val,
+						question : thing.columns[thinguser.column_b].val
+					};
+				}
 			}
 		}
 	};
@@ -51,8 +61,8 @@ var onLoad = function($) {
 	var levenshtein = MEMRISE.garden.scoring.levenshtein;
 
 	var compare = function(a, b) {
-		a = a.toLowerCase();
-		b = b.toLowerCase();
+		a = $.trim(a.toLowerCase());
+		b = $.trim(b.toLowerCase());
 
 		if (IGNORE_ACCENTS) {
 			a = removeDiacritics(a);
