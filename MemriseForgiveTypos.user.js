@@ -180,6 +180,9 @@ var onLoad = function($) {
 		}
 
 		var trigger = function(event) {
+			if ($(event.target).is('textarea'))
+				return;
+
 			for (var i = handlers.length - 1; i >= 0; i--) {
 				handlers[i].handler(event);
 			}
