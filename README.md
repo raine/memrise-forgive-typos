@@ -9,7 +9,7 @@ I'm not a big fan of making a hack like this but at the same time I don't
 think you should be punished for accidental typos as Memrise currently does.
 Use at your own peril.
 
-![](http://raneksi.github.io/memrise-forgive-typos/demo.gif)
+![](https://raw.github.com/raneksi/memrise-forgive-typos/gh-pages/demo.gif)
 
 # Installation
 
