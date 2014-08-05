@@ -1,3 +1,12 @@
+# THIS README IS OUTDATED
+
+Userscripts.org is down, perhaps forever.
+
+You can try installing the script directly from github:
+
+https://github.com/raine/memrise-forgive-typos/raw/master/MemriseForgiveTypos.user.js
+
+
 MemriseForgiveTypos.user.js
 ===========================
 
