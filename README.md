@@ -14,11 +14,6 @@ Use at your own peril.
 
 I have tested the userscript on Chrome and Firefox using Greasemonkey.
 
-## Firefox
-
-1. Install [Greasemonkey][greasemonkey].
-2. Open [MemriseForgiveTypos.user.js][raw-script] and click **Install**.
-
 ## Chrome
 
 ### Method 1 (Easier and recommended)
@@ -33,6 +28,11 @@ This method provides automatic updates for the script.
 1. Download [MemriseForgiveTypos.user.js][raw-script] to your computer.
 2. Go to the extension view in Chrome ([chrome://extensions](chrome://extensions)).
 3. Drag the `MemriseForgiveTypos.user.js` file on the extension page. It should say "Drop to install" as you do so.
+
+## Firefox
+
+1. Install [Greasemonkey][greasemonkey].
+2. Open [MemriseForgiveTypos.user.js][raw-script] and click **Install**.
 
 ## Safari
 
