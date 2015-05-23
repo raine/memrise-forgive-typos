@@ -21,7 +21,7 @@ I have tested the userscript on Chrome and Firefox using Greasemonkey.
 
 ## Chrome
 
-### Method 1 (Recommended)
+### Method 1 (Easier and recommended)
 
 This method provides automatic updates for the script.
 
