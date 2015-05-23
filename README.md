@@ -18,8 +18,6 @@ I have tested the userscript on Chrome and Firefox using Greasemonkey.
 
 ### Method 1 (Easier and recommended)
 
-This method provides automatic updates for the script.
-
 1. Install [Tampermonkey extension][tampermonkey] on Chrome Store.
 2. Open [MemriseForgiveTypos.user.js][raw-script] and click **Install**.
 
