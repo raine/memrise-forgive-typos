@@ -16,8 +16,8 @@ I have tested the userscript on Chrome and Firefox using Greasemonkey.
 
 ## Firefox
 
-1. Install [Greasemonkey]().
-2. Open [MemriseForgiveTypos.user.js][raw-script]  and click **Install**.
+1. Install [Greasemonkey][greasemonkey].
+2. Open [MemriseForgiveTypos.user.js][raw-script] and click **Install**.
 
 ## Chrome
 
@@ -26,7 +26,7 @@ I have tested the userscript on Chrome and Firefox using Greasemonkey.
 This method provides automatic updates for the script.
 
 1. Install [Tampermonkey extension][tampermonkey] on Chrome Store.
-2. Open [MemriseForgiveTypos.user.js][raw-script] and click **OK** to confirm installation.
+2. Open [MemriseForgiveTypos.user.js][raw-script] and click **Install**.
 
 ### Method 2
 
