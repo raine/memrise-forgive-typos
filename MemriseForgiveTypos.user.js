@@ -2,7 +2,7 @@
 // @name           Memrise Forgive Typos
 // @description    Makes Memrise more forgiving on typos
 // @match          http://www.memrise.com/course/*/garden/*
-// @match          http://www.memrise.com/garden/water/*
+// @match          http://www.memrise.com/garden/review/*
 // @version        0.1.7
 // @updateURL      https://userscripts.org/scripts/source/167003.meta.js
 // @downloadURL    https://userscripts.org/scripts/source/167003.user.js
